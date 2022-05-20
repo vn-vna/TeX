@@ -1,0 +1,144 @@
+\documentclass[utf8,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{vntex}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\usepackage{tabularx}
+\usepackage{amssymb}
+
+\author{Shiro - VNA}
+\title{Các công thức \linebreak Lý thuyết xác suất và thống kê toán}
+
+\begin{document}
+\maketitle
+\pagebreak
+
+\section[]{Công thức thống kê}
+
+\begin{center}
+    Các công thức thống kê với tổng thể và mẫu \linebreak 
+    \begin{tabularx}{12.32cm} { 
+        | >{\centering\arraybackslash} m{3cm}
+        | >{\centering\arraybackslash} m{4cm}
+        | >{\centering\arraybackslash} m{4cm} | }
+        \hline
+            Công thức & 
+            Tổng thể \linebreak \(T = \{x_i | i \in [1;n] \}\) & 
+            Mẫu \linebreak \(M = \{x_i | i \in [1;k]\}\)\\
+        \hline
+            Trung bình \linebreak Mean & 
+            \[\mu = \frac{1}{n} \cdot \sum^{n}_{i = 1}{x_i}\] & 
+            \[\bar{x} = \frac{1}{k} \cdot \sum^{k}_{i = 1}{x_i}\] \\
+        \hline
+            Tổng bình phương \linebreak Sum square of diff &  
+            \[SS = \sum^{n}_{i = 1}{(x_i - \mu)^{2}}\] & 
+            \[SS = \sum^{k}_{i = 1}{(x_i - \bar{x})^{2}}\] \\
+        \hline
+            Phương sai \linebreak Variance & 
+            \[\sigma^{2} = \frac{SS}{n}\] & 
+            \[s^{2} = \frac{SS}{k - 1}\] \\
+        \hline
+            Độ lệch chuẩn \linebreak Standard deviation & 
+            \[\sigma = \sqrt{\sigma^{2}}\] & 
+            \[s = \sqrt{s^{2}}\] \\
+        \hline
+            Hệ số biến thiên \linebreak Coefficient of variation & 
+            \[cov(T) = CV = \frac{\sigma}{\mu} \times 100\%\] & 
+            \[cov(M) = CV = \frac{s}{\bar{x}} \times 100\%\] \\
+        \hline
+            Z-Score &
+            \[z^{(T)}_{i} = \frac{x_{i} - \mu}{\sigma}\] & 
+            \[z^{(M)}_{i} = \frac{x_{i} - \bar{x}}{s}\]\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\section[]{Hình dáng phân phối}
+- Hệ số bất đối xứng mẫu (skewness):
+\[a_{3} = \frac{1}{{s}^{3}} \cdot \frac{1}{n} \cdot \sum_{i = 1}^{n}{{(x_{i} - \bar{x})}^{3}}\]
+\begin{center}
+    \({a}_{3} < 0\): Lệch phải, đuôi phải
+    \linebreak
+    \({a}_{3} > 0\): Lệch trái, đuôi trái
+\end{center}
+- Hệ số nhọn nhọn mẫu (kurtosis):
+\[a_{4} = \frac{1}{{s}^{4}} \cdot \frac{1}{n} \cdot \sum_{i = 1}^{n}{{(x_{i} - \bar{x})}^{4}}\]
+
+\section[]{Biến dữ liệu theo cặp \(({x}_{i}; {y}_{i})\)}
+\begin{center}
+    \begin{tabularx}{12.32cm} { 
+        | >{\centering\arraybackslash} m{3cm}
+        | >{\centering\arraybackslash} m{4cm}
+        | >{\centering\arraybackslash} m{4cm} | }
+        \hline
+            Hiệp phương sai \linebreak Co-variance \linebreak \((Cov)\) &
+            \[\frac{1}{n} \cdot \sum_{i = 0}^{n}{({x}_{i} - {\mu}_{X})({y}_{i} - {\mu}_{Y})}\] & 
+            \[\frac{1}{k - 1} \cdot \sum_{i = 0}^{k}{({x}_{i} - {\bar{x}})({y}_{i} - {\bar{y}})}\] \\
+        \hline
+            Hệ số tương quan \linebreak Co-relation \linebreak \((Cor)\) &
+            \[{\rho}_{X,Y} = \frac{Cov(X, Y)}{{\sigma}_{X} \cdot {\sigma}_{Y}}\] &
+            \[{r}_{X,Y} = \frac{Cov(X, Y)}{{s}_{X} \cdot {s}_{Y}}\] \\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\section[]{Công thức xác suất}
+\begin{center}
+    \begin{tabularx}{11.9cm} { 
+        | >{\centering\arraybackslash} m{3cm}
+        | >{\centering\arraybackslash} m{8cm} | }
+        \hline
+            Nhân xác suất &
+            \[P(A \cap B) = P(A) \cdot P(B | A) = P(B) \cdot P(A | B)\] \\
+        \hline
+            Xác suất của tổng&
+            \[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]\\
+        \hline
+            Công thức Bernoulli &
+            Xác suất để phép thử \(A\) có \(P(A) = p = const\) xảy ra đúng \(x\) lần trong \(n\) phép thử
+            \[P(x | n, p) = {C}^{x}_{n}{p}^{x}{(1 - p)}^{n - x} \;\;\; (x,n \in \mathbb{Z})\] \\
+        \hline
+            Công thức Bayeas & 
+            \[P(A | B) = \frac{P(B | A) \cdot P(B)}{P(A)}\] \\
+        \hline
+            Công thức xác suất đầy đủ & 
+            \(\{{A}_{i}\}\) là nhóm đầy đủ các biến cố, \(B\) xảy ra đồng thời với 1 trong số \(\{{A}_{i}\}\)
+            \[P(B) = {\sum}_{i}{P({A}_{i}) \cdot P(B | {A}_{i})}\] \\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\section[]{Phân phối nhị thức}
+Biến ngẫu nhiên \(X\) có xác suất \(P(X) = p\), và phép thử được thực hiện \(n\) lần. Kí hiệu \(X \thicksim B(n; p)\)
+\[E(X) = np\] 
+\[V(X) = np(1 - p)\] 
+\[P(X = x) = {C}^{x}_{n}{p}^{x}{(1 - p)}^{n - x} \;\;\; (x \in \mathbb{Z})\]
+\[P(a <= X <= b) = {\sum}^{b}_{x = a}{{C}^{x}_{n}{p}^{x}{(1 - p)}^{n - x}} \;\;\; (x \in \mathbb{Z})\]
+
+\section[]{Phân phối Posson}
+Biến ngẫu nhiên có:
+\[P(X = x) = {e}^{- \lambda} \cdot \frac{{\lambda}^{x}}{x!} \;\;\; (x \in \mathbb{Z})\]
+Ký hiệu: \(X \thicksim P(\lambda)\)
+\[E(X) = \lambda\] 
+\[V(X) = \lambda\] 
+\[\lambda - 1 <= {m}_{0} <= \lambda\]
+
+\section[]{Phân phối đều}
+Biến ngẫu nhiên liên tục phân phối đều trên khoảng \((a;b)\). Ký hiệu \(X \thicksim U(a;b)\)
+\[E(X) = \frac{a + b}{2}\] 
+\[V(X) = \frac{{(b - a)^{2}}}{12}\] 
+\[P(c < X < d) = \frac{d - c}{b - a}\]
+
+\section[]{Phân phối chuẩn}
+Biến ngẫu nhiên liên tục phân phối chuẩn nếu hàm mật độ có dạng: 
+\[f(x) = \frac{1}{\sigma \sqrt{2 \pi}} {e}^{-\frac{{(x - \mu)}^{2}}{2 {\sigma}^{2}}}\]
+Ký hiệu: \(X \thicksim N(\mu ; {\sigma}^{2})\)
+\[\Phi \left(-z\right) + \Phi \left(z\right) = 1\]
+\[P(X < b) = \Phi \left(\frac{b - \mu}{\sigma}\right)\]
+\[P(X > a) = 1 - \Phi \left(\frac{a - \mu}{\sigma}\right)\]
+\[P(a < X < b) = \Phi \left( \frac{b - \mu}{\sigma} \right) - \Phi \left( \frac{a - \mu}{\sigma} \right)\]
+\[P(|X - \mu| < \varepsilon) = 2 \Phi \left( \frac{\varepsilon}{\sigma}\right) - 1\]
+\[P(|X - \mu| < \sigma) \approx 0.6826\]
+\[P(|X - \mu| < 2\sigma) \approx 0.9544\]
+\[P(|X - \mu| < 3\sigma) \approx 0.6974\]
+
+\end{document}
